@@ -3,6 +3,7 @@ import validator from "validator";
 import { Request, Response } from "express";
 import client from "../db/db";
 import bcrypt from "bcrypt";
+import { CustomRequest } from "../authMiddleWare/requireAuth";
 
 const maxAge = 3 * 24 * 60 * 60;
 const createToken = (id: number) => {
@@ -12,7 +13,6 @@ const createToken = (id: number) => {
 };
 
 export const signup = async (req: Request, res: Response) => {
-  console.log(req.body);
   const { username, password, firstName, lastName, email } = req.body;
   try {
     if (username === "" || password === "" || email === "") {
@@ -44,7 +44,6 @@ export const signup = async (req: Request, res: Response) => {
         email,
       },
     });
-    console.log(response);
     const token = createToken(response.id);
     res.cookie("jwt", token, {
       maxAge: maxAge * 1000,
