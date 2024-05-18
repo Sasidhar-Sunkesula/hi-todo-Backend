@@ -48,6 +48,7 @@ export const signup = async (req: Request, res: Response) => {
     res.cookie("jwt", token, {
       maxAge: maxAge * 1000,
       httpOnly: true,
+      sameSite: "none"      
     });
     res.status(201).json({
       data: response,
@@ -82,6 +83,7 @@ export const login = async (req: Request, res: Response) => {
     res.cookie("jwt", token, {
       maxAge: maxAge * 1000,
       httpOnly: true,
+      sameSite: "none"
     });
     res.json({
       data: user,
