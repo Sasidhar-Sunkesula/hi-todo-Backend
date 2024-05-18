@@ -1,7 +1,7 @@
 {
   "name": "prisma-practice",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "main": "dist/server.js",
   "scripts": {
     "start": "node dist/server.js",
     "build": "npx tsc -b",
